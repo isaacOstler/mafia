@@ -1,0 +1,25 @@
+{
+  "name": "mafia",
+  "version": "1.0.0",
+  "description": "A mafia game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacOstler/mafia.git"
+  },
+  "keywords": [
+    "mafia",
+    "game",
+    "fun",
+    "realtime"
+  ],
+  "author": "Isaac Ostler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isaacOstler/mafia/issues"
+  },
+  "homepage": "https://github.com/isaacOstler/mafia#readme"
+}
