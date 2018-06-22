@@ -1,0 +1,17 @@
+body{
+	background: linear-gradient(to bottom, #582828 0%, #2d2d2d 20%, black 100%);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+	background-attachment: fixed;
+	color:white;
+	font-family: 'Arial';
+}
+#header{
+	position: absolute;
+	top:20px;
+	left: 20px;
+	color: red;
+	font-family: 'Impact';
+	font-size: 50px;
+}
