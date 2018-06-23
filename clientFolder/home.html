@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,5 +7,65 @@
 </head>
 <body>
 	<div id="header">MAFIA</div>
+	<div id="name">ISAAC</div>
+	<div id="role">Godfather</div>
+	<div id="roleHelp" class="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+	    <path fill="none" d="M0 0h24v24H0z"/>
+	    <path fill="white" d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+		</svg>
+	</div>
+	<div id="controls">
+		<div id="controls_timer">
+			Day 3 - 01:30
+		</div>
+		<div id="controls_prompt" class="container">
+			<div id="controls_prompt_header">Town Discussion</div>
+			<div id="controls_prompt_subtitle">Trails will commence shortly</div>
+			<div id="controls_prompt_timer">45 seconds remaining</div>
+		</div>
+		<div id="controls_vote" class="container">
+			<div id="controls_vote_header">
+				SELECT A PLAYER TO SEND TO TRIAL
+			</div>
+			<div id="controls_vote_list">
+				<div class="controls_vote_list_item button">
+					<div class="controls_vote_list_item_votes">0</div>
+					<div class="controls_vote_list_item_name">Isaac</div>
+				</div>
+			</div>
+		</div>
+		<div id="controls_youAreOnTrial" class="container">
+			<div id="controls_youAreOnTrial_header">
+				You Are On Trial
+			</div>
+			<div id="controls_youAreOnTrial_subtitle">
+				Present Your Case To The Town
+			</div>
+			<div id="controls_youAreOnTrial_timer">
+				Trial ends in 45 seconds
+			</div>
+		</div>
+		<div id="controls_trial" class="container" style="display:block">
+			<div id="controls_trial_header">
+				Isaac is on trial
+			</div>
+			<div id="controls_trial_timer">
+				Trial ends in 45 seconds
+			</div>
+			<div id="controls_trial_action">
+				You Have Decided To Vote Guilty...
+			</div>
+			<div id="controls_trial_guiltyButton" class="button">
+				Guilty
+			</div>
+			<div id="controls_trial_innocentButton" class="button">
+				Innocent
+			</div>
+			<div id="controls_trial_abstainButton" class="button">
+				Abstain
+			</div>
+		</div>
+	</div>
 </body>
 </html>
