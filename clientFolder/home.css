@@ -204,6 +204,101 @@ body{
 	position: absolute;
 	top:20px;
 }
+#roleHelpPopupCloseButton{
+	display: none;
+	position: absolute;
+	top:10px;
+	height: 10px;
+	right: 10px;
+	background:linear-gradient(to bottom, red, darkred);
+	z-index: 11;
+	text-align: center;
+	width:18px;
+	border-radius: 4px;
+	border: 1px solid white;
+	height: 18px;
+}
+#roleHelpPopup{
+	display: none;
+	overflow: hidden;
+	position: absolute;
+	top:20px;
+	left: 20px;
+	width: calc(100% - 40px);
+	height: calc(100% - 40px);
+	border: 1px solid white;
+	background-color: rgba(0,0,0,.75);
+	z-index: 10;
+	box-shadow: black 0px 0px 100px;
+	filter: drop-shadow(black 0px 0px 30px);
+}
+#roleHelpPopup_header{
+	position: absolute;
+	top:5px;
+	left: 5px;
+	width:calc(100% - 10px);
+	overflow: hidden;
+	height: 35px;
+	font-size: 32px;
+	background: linear-gradient(to right,rgba(251, 251, 251, 0.3),rgba(0,0,0,0));
+	padding:10px;
+	padding-right:0px;
+}
+#roleHelpPopup_goals{
+	top:100px;
+	height: 100px;
+}
+#roleHelpPopup_abilities{
+	top: 220px;
+	height: 100px;
+}
+#roleHelpPopup_alignment{
+	top:60px;
+	background: linear-gradient(to right,rgba(128,0,0,.3),rgba(0,0,0,0));
+}
+#roleHelpPopup_info{
+	top: 340px;
+	height: calc(100% - 360px);
+	overflow: auto;
+	width: calc(100% - 20px);
+}
+#roleHelpPopup_alignment_value{
+	float: left;
+	height: 0px;
+	overflow: overlay;
+	width: calc(50% - 20px);
+	text-align: right;
+	height: 20px;
+	position: relative;
+}
+#roleHelpPopup_alignment_label{
+	width: 50%;
+	height: 20px;
+}
+.helpAttribute{
+	float:left;
+	font-weight: bold;
+	width:100%;
+	height: 20px;
+	overflow: hidden;
+}
+.helpValue{
+	float:left;
+	padding-right: 20px;
+	height: calc(100% - 20px);
+	overflow: auto;
+}
+.roleHelpContainer{
+	position: absolute;
+	left: 5px;
+	width:calc(100% - 10px);
+	overflow: hidden;
+	height: 20px;
+	font-size: 18px;
+	background: linear-gradient(to right,rgba(27, 65, 121, 0.3),rgba(0,0,0,0));
+	padding:10px;
+	padding-right:0px;
+}
 .controls_vote_list_item{
 	background-color: rgba(255,255,255,.1);
 	position: relative;
