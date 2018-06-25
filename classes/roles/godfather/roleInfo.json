@@ -1,0 +1,7 @@
+{
+	"roleName" : "godfather",
+	"alignment" : "mafia",
+	"goals" : "Kill off the entire town and all others who would appose you",
+	"abilities" : "Kill one person each night",
+	"info" : "You are the leader of the town Mafia.  Decide each night who the mafia will kill, and then you will be the one to kill said person.  Work as a team, and strategically kill off the players who are the greatest threats to you."
+}
