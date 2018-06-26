@@ -16,6 +16,7 @@ module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster){
 			console.log('Player ' + data.userGUID + ' joined game ' + data.gameGUID);
 		});
 		socket.on('disconnect', function () {
+			gameMaster.removePlayerFromGame(socket);
 			console.log('A user disconnected');
 		});
 	});

@@ -6,8 +6,6 @@ var game = require(appRoot + '/classes/game.js');
 
 //variables
 var currentGames = [];
-var socket;
-
 //game object
 
 /*
@@ -16,8 +14,8 @@ var socket;
 	"players" : 
 }*/
 
-module.exports.init = function(passedSocket){
-	socket = passedSocket;
+module.exports.init = function(){
+	
 };
 
 module.exports.createNewGame = function(){
@@ -28,9 +26,21 @@ module.exports.createNewGame = function(){
 	currentGameObject.game.on('dayOrNightEnd',function(){
 		for(var i = 0;i < currentGameObject.players.length;i++){
 			console.log('It is ' + (currentGameObject.game.isDay ? 'day' : 'night') + ' ' + (currentGameObject.game.currentDay + 1));
-			currentGameObject.players[i].socket.emit('data',"It is " + (currentGameObject.game.isDay ? "day" : "night") + " " + (currentGameObject.game.currentDay + 1));
+			currentGameObject.players[i].socket.emit('data','It is ' + (currentGameObject.game.isDay ? 'day' : 'night') + ' ' + (currentGameObject.game.currentDay + 1));
 		}
 	});
+};
+
+module.exports.removePlayerFromGame = function(socket){
+	for(var i = 0;i < currentGames.length;i++){
+		for(var j = 0;j < currentGames[i].players.length;j++){
+			if(currentGames[i].players[j].socket == socket){
+				console.log(('Player ' + currentGames[i].players[j].guid.toString().bold + ' was removed from game ' + currentGames[i].game.guid.toString().bold).error);
+				currentGames[i].players.splice(j,1);
+				return;
+			}
+		}
+	}
 };
 
 module.exports.addPlayerToGame = function(gameGUID,playerInfo){
