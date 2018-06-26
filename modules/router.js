@@ -18,9 +18,11 @@ colors.setTheme({
 });
 
 //code
-module.exports.init = function(app,port){
+module.exports.init = function(passedApp){
+	var app = passedApp;
 	var clientFolder = appRoot + '/clientFolder/';
 	var	classFolder = appRoot + '/classes/';
+
 	app.get('/', function (req, res) {
 		res.sendFile(clientFolder + 'home.html');
 	});
@@ -41,6 +43,4 @@ module.exports.init = function(app,port){
 	app.use(function (err, req, res, next) {
 		console.log('Error! '.error.bold + err.toString().error);
 	});
-
-	app.listen(port);
 };

@@ -1,14 +1,21 @@
 //npm modules
-var express = require('express');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 //variables
 var port = 3000;
-var app = express();
 
 //modules
-var route = require(__dirname + '/modules/route.js');
+var router = require(__dirname + '/modules/router.js');
 var database = require(__dirname + '/modules/database.js');
+var socketManager = require(__dirname + '/modules/socketManager.js');
+var gameMaster = require(__dirname + '/modules/gameMaster.js');
 
 //code
-route.init(app,port);
+router.init(app,port);
+socketManager.init(io,http,port,gameMaster);
 database.init();
+gameMaster.init(io);
+
+gameMaster.createNewGame();
