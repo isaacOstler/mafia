@@ -76,6 +76,9 @@ body{
 .openLobbiesList_list_item_name{
 	position: relative;
 	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 100%;
 	padding-left: 5px;
 	width:75%;
 	overflow: hidden;

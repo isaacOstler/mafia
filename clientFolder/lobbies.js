@@ -1,5 +1,9 @@
+//DOM references
+var gamesList = $('#openLobbiesList_list');
+
+//variables
 var socket = io();
-var currentGames = '';
+var currentGames = [];
 
 //get query string from URL
 var urlParams;
@@ -18,12 +22,40 @@ var urlParams;
 //set up socket connections
 
 socket.on('connect',function(){
-    console.log("hello")
-    var player = new Player("Unknown Player");
-    player.setGUID(urlParams.player);
-    socket.emit('joinGame',{'gameGUID' : urlParams.game,'player' : player});
 	socket.emit('getCurrentGames');
     socket.on('recieveCurrentGames',function(data){
-        console.log(data);
+        if(true || currentGames.length != data.length){
+            //redraw
+            currentGames = data;
+
+            var html = '';
+
+            for(var i = 0;i < currentGames.length;i++){
+                html += '<div gameGUID="' + currentGames[i].game.guid + '" class="openLobbiesList_list_item button">';
+                html += '<div gameGUID="' + currentGames[i].game.guid + '" class="openLobbiesList_list_item_name">';
+                html += currentGames[i].game.gameName;
+                html += '</div>';
+                html += '<div gameGUID="' + currentGames[i].game.guid + '" class="openLobbiesList_list_item_players">';
+                html += currentGames[i].players.length + ' / 12';
+                html += '</div>';
+                html += '</div>';
+            }
+
+            gamesList.html(html);
+        }else{
+            //update
+
+        }
+        $('.openLobbiesList_list_item').off();
+        $('.openLobbiesList_list_item').click(function(event){
+            var gameGUID = $(event.target).attr('gameGUID');
+            if(gameGUID == null || gameGUID == undefined){
+                return;
+            }
+            var player = new Player("Unknown Player");
+            //player.setGUID(urlParams.player);
+            socket.emit('leaveGames');
+            socket.emit('joinGame',{'gameGUID' : gameGUID,'player' : player});
+        });
     });
 });

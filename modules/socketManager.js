@@ -20,8 +20,11 @@ module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster){
 		});
 
 		socket.on('joinGame',function(data){
-			console.log('game: ' + data.gameGUID + '  Player: ' + JSON.stringify(data.player));
 			gameMaster.addPlayerToGame(data.gameGUID,data.player,socket);
+		});
+
+		socket.on('leaveGames',function(){
+			gameMaster.removePlayerFromGame(socket)
 		});
 
 		socket.on('getCurrentGames',function(){
@@ -67,7 +70,7 @@ function triggerSocketEvent(eventKey,newData,socketEvent){
 	for(var i = 0;i < socketEventListeners.length;i++){
 		if(socketEventListeners[i].eventKey == eventKey){
 			for(var j = 0;j < socketEventListeners[i].sockets.length;j++){
-				socketEventListeners[i].sockets[i].emit(socketEvent,newData);
+				socketEventListeners[i].sockets[j].emit(socketEvent,newData);
 			}
 		}
 	}

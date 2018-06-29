@@ -17,7 +17,14 @@ var onLobbiesChangeCallback;
 }*/
 
 module.exports.init = function(){
-	
+	var newGame = new game.Game();
+	currentGames.splice(currentGames.length,0,{'game' : newGame,'players' : []});
+	var newGame = new game.Game();
+	currentGames.splice(currentGames.length,0,{'game' : newGame,'players' : []});
+	var newGame = new game.Game();
+	currentGames.splice(currentGames.length,0,{'game' : newGame,'players' : []});
+	var newGame = new game.Game();
+	currentGames.splice(currentGames.length,0,{'game' : newGame,'players' : []});
 };
 
 module.exports.createNewGame = function(){
