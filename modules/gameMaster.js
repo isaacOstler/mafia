@@ -27,31 +27,6 @@ module.exports.createNewGame = function(){
 	updateLobbyEventListener();
 };
 
-module.exports.removePlayerFromGame = function(socket){
-	for(var i = 0;i < currentGames.length;i++){
-		for(var j = 0;j < currentGames[i].players.length;j++){
-			if(currentGames[i].players[j].socket == socket){
-				console.log(('Player ' + currentGames[i].players[j].guid.toString().bold + ' was removed from game ' + currentGames[i].game.guid.toString().bold).error);
-				addSocketToSocketList(currentGames[i].game.guid,socket);
-				currentGames[i].players.splice(j,1);
-				updateLobbyEventListener();
-				return;
-			}
-		}
-	}
-};
-
-module.exports.addPlayerToGame = function(gameGUID,playerInfo){
-	for(var i = 0;i < currentGames.length;i++){
-		if(currentGames[i].game.guid == gameGUID){
-			currentGames[i].players.splice(currentGames[i].players.length,0,playerInfo.guid);
-			addSocketToSocketList(gameGUID,playerInfo.socket);
-			updateLobbyEventListener();
-			console.log(('Player ' + playerInfo.guid + ' successfully added to game ' + currentGames[i].game.guid + '!').toString().info);
-		}
-	}
-};
-
 module.exports.endGame = function(GUID){
 	for(var i = 0;i < currentGames.length;i++){
 		if(currentGames[i].game.getGUID() == GUID){
@@ -61,6 +36,64 @@ module.exports.endGame = function(GUID){
 			return;
 		}
 	}
+};
+
+module.exports.removePlayerFromGame = function(socket){
+	var gameGUID;
+	var playerGUID;
+
+	for(var i = 0;i < connectedSockets.length;i++){
+		for(var j = 0;j < connectedSockets[i].sockets.length;j++){
+			if(connectedSockets[i].sockets[j].socket == socket){
+				gameGUID = connectedSockets[i].gameGUID;
+				playerGUID = connectedSockets[i].sockets[j].player.guid;
+				connectedSockets[i].sockets[j].socket = null; //garbage collection
+				connectedSockets[i].sockets.splice(j,1);
+				break;
+			}
+		}
+	}
+	if(playerGUID != null && gameGUID != null){
+		for(var i = 0;i < currentGames.length;i++){
+			if(gameGUID == currentGames[i].game.guid){
+				for(var j = 0;j < currentGames[i].players.length;j++){
+					if(currentGames[i].players[j].guid == playerGUID){
+						currentGames[i].players.splice(j,1);
+						break;
+					}
+				}
+			}
+		}
+	}
+	updateLobbyEventListener();
+};
+
+module.exports.addPlayerToGame = function(gameGUID,player,socket){
+	var wasAdded = false;
+	for(var i = 0;i < currentGames.length;i++){
+		if(currentGames[i].game.guid == gameGUID){
+			wasAdded = true;
+			currentGames[i].players.splice(currentGames[i].players.length,0,player);
+		}
+	}
+	if(wasAdded == false){
+		//this game hasn't been created yet
+		return;
+	}
+	wasAdded = false;
+	for(var i = 0;i < connectedSockets.length;i++){
+		if(connectedSockets[i].gameGUID == gameGUID){
+			wasAdded = true;
+			connectedSockets[i].sockets.splice(connectedSockets[i].sockets.length,0,{'player' : player,'socket' : socket});
+			break;
+		}
+	}
+	if(wasAdded == false){
+		//this game has been created, but does NOT have a sockets list
+		//we need to add one
+		connectedSockets.splice(connectedSockets.length,0,{'gameGUID' : gameGUID,'sockets' : [{'player' : player,'socket' : socket}]})
+	}
+	updateLobbyEventListener();
 };
 
 module.exports.getCurrentGames = function(){
@@ -78,29 +111,5 @@ module.exports.on = function(event,callback){
 function updateLobbyEventListener(){
 	if(onLobbiesChangeCallback != null){
 		onLobbiesChangeCallback(currentGames);
-	}
-}
-
-function removeSocketFromSocketList(gameGUID,socket){
-	for(var i = 0;i < connectedSockets.length;i++){
-		if(connectedSockets[i].gameGUID == gameGUID){
-			for(var j = 0;j < connectedSockets[i].sockets.length;j++){
-				connectedSockets[i].sockets.splice(j,1);
-				return;
-			}
-		}
-	}
-}
-
-function addSocketToSocketList(gameGUID,socket){
-	var addedToSocketList = false;
-	for(var i = 0;i < connectedSockets.length;i++){
-		if(connectedSockets[i].gameGUID == gameGUID){
-			connectedSockets[i].sockets.splice(connectedSockets[i].sockets.length,0,socket);
-			addedToSocketList = true;
-		}
-	}
-	if(!addedToSocketList){
-		connectedSockets.splice(connectedSockets.length,0,{"gameGUID" : gameGUID,"sockets" : [socket]})
 	}
 }

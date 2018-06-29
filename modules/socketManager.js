@@ -15,11 +15,13 @@ module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster){
 
 		socket.on('disconnect', function () {
 			gameMaster.removePlayerFromGame(socket);
+			removeFromSocketEventListener('onLobbiesChange',socket);
 			console.log('A user disconnected');
 		});
 
 		socket.on('joinGame',function(data){
-			gameMaster.addPlayerToGame(data.gameGUID,{'guid' : data.userGUID,'socket' : socket});
+			console.log('game: ' + data.gameGUID + '  Player: ' + JSON.stringify(data.player));
+			gameMaster.addPlayerToGame(data.gameGUID,data.player,socket);
 		});
 
 		socket.on('getCurrentGames',function(){
@@ -65,6 +67,7 @@ function triggerSocketEvent(eventKey,newData,socketEvent){
 	for(var i = 0;i < socketEventListeners.length;i++){
 		if(socketEventListeners[i].eventKey == eventKey){
 			for(var j = 0;j < socketEventListeners[i].sockets.length;j++){
+				console.log("FOOOO!");
 				socketEventListeners[i].sockets[i].emit(socketEvent,newData);
 			}
 		}

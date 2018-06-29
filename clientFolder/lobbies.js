@@ -18,12 +18,12 @@ var urlParams;
 //set up socket connections
 
 socket.on('connect',function(){
-    socket.emit('joinGame',{'gameGUID' : urlParams.game,'userGUID' : urlParams.player});
+    console.log("hello")
+    var player = new Player("Unknown Player");
+    player.setGUID(urlParams.player);
+    socket.emit('joinGame',{'gameGUID' : urlParams.game,'player' : player});
 	socket.emit('getCurrentGames');
     socket.on('recieveCurrentGames',function(data){
         console.log(data);
     });
-	socket.on('recieveCurrentGames',function(data){
-		console.log(data);
-	});
 });
