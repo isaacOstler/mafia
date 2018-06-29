@@ -67,7 +67,6 @@ function triggerSocketEvent(eventKey,newData,socketEvent){
 	for(var i = 0;i < socketEventListeners.length;i++){
 		if(socketEventListeners[i].eventKey == eventKey){
 			for(var j = 0;j < socketEventListeners[i].sockets.length;j++){
-				console.log("FOOOO!");
 				socketEventListeners[i].sockets[i].emit(socketEvent,newData);
 			}
 		}

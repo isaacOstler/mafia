@@ -54,11 +54,11 @@ module.exports.removePlayerFromGame = function(socket){
 		}
 	}
 	if(playerGUID != null && gameGUID != null){
-		for(var i = 0;i < currentGames.length;i++){
-			if(gameGUID == currentGames[i].game.guid){
-				for(var j = 0;j < currentGames[i].players.length;j++){
-					if(currentGames[i].players[j].guid == playerGUID){
-						currentGames[i].players.splice(j,1);
+		for(var x = 0;x < currentGames.length;x++){
+			if(gameGUID == currentGames[x].game.guid){
+				for(var y = 0;y < currentGames[x].players.length;y++){
+					if(currentGames[x].players[y].guid == playerGUID){
+						currentGames[x].players.splice(y,1);
 						break;
 					}
 				}
@@ -81,17 +81,17 @@ module.exports.addPlayerToGame = function(gameGUID,player,socket){
 		return;
 	}
 	wasAdded = false;
-	for(var i = 0;i < connectedSockets.length;i++){
-		if(connectedSockets[i].gameGUID == gameGUID){
+	for(var z = 0;z < connectedSockets.length;z++){
+		if(connectedSockets[z].gameGUID == gameGUID){
 			wasAdded = true;
-			connectedSockets[i].sockets.splice(connectedSockets[i].sockets.length,0,{'player' : player,'socket' : socket});
+			connectedSockets[z].sockets.splice(connectedSockets[z].sockets.length,0,{'player' : player,'socket' : socket});
 			break;
 		}
 	}
 	if(wasAdded == false){
 		//this game has been created, but does NOT have a sockets list
 		//we need to add one
-		connectedSockets.splice(connectedSockets.length,0,{'gameGUID' : gameGUID,'sockets' : [{'player' : player,'socket' : socket}]})
+		connectedSockets.splice(connectedSockets.length,0,{'gameGUID' : gameGUID,'sockets' : [{'player' : player,'socket' : socket}]});
 	}
 	updateLobbyEventListener();
 };
