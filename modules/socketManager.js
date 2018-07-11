@@ -2,13 +2,15 @@ var io;
 var http;
 var port;
 var gameMaster;
+var databaseManager;
 var socketEventListeners = [];
 
-module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster){
+module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster,passedDatabaseManager){
 	io = passedIO;
 	http = passedHTTP;
 	port = passedPort;
 	gameMaster = passedGameMaster;
+	databaseManager = passedDatabaseManager;
 
 	io.on('connection', function(socket) {
 		console.log('A user connected');
@@ -30,6 +32,14 @@ module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster){
 		socket.on('getCurrentGames',function(){
 			addToSocketEventListener('onLobbiesChange',socket);
 			socket.emit('recieveCurrentGames',gameMaster.getCurrentGames());
+		});
+
+		socket.on('getUserGUID',function(data){
+			socket.emit('recieveUserGUID',databaseManager.getUserGUID(data.username,data.password));
+		});
+
+		socket.on('getUserInfo',function(data){
+			socket.emit('recieveUserInfo',databaseManager.getUserInfo(data.guid));
 		});
 	});
 

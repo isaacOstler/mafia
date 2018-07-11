@@ -1,0 +1,60 @@
+[
+	{
+		"loginInformation" :
+		{
+			"username" : "lavapig1",
+			"password" : "mafiaFTW19"
+		},
+		"userTraits" :
+		{
+			"guid" : "58ef212d-0c09-7e53-1f2e-52663d703754",
+			"name" :
+			{
+				"first" : "Isaac",
+				"middle" : "Stephen",
+				"last" : "Ostler"
+			},
+			"hair" : 
+			{
+				"color" : "brown",
+				"lengthInInches" : 3
+			},
+			"gender" : "male",
+			"race" : "caucasian",
+			"height" :
+			{
+				"feet" : 5,
+				"inches" : 7
+			}
+		}
+	},
+	{
+		"loginInformation" :
+		{
+			"username" : "ffguygbnjk",
+			"password" : "whatshisface"
+		},
+		"userTraits" :
+		{
+			"guid" : "efe4df21-7ff7-0479-bedc-a231afa2b75d",
+			"name" :
+			{
+				"first" : "Jermey",
+				"middle" : "",
+				"last" : "Brandow"
+			},
+			"hair" : 
+			{
+				"color" : "brown",
+				"lengthInInches" : 1
+			},
+			"gender" : "male",
+			"race" : "caucasian",
+			"height" :
+			{
+				"feet" : 5,
+				"inches" : 11
+			}
+		}
+	}
+]

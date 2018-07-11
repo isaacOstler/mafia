@@ -1,0 +1,103 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mafia - Login</title>
+	<link rel='stylesheet' type='text/css' href='/resource?file=login.css'>
+	<link rel='stylesheet' type='text/css' href='/resource?file=generalThemes.css'>
+</head>
+<body>
+	<div id='loginBox'>
+		<div id='loginBox_header' class='header'>User Information</div>
+		<div id='loginBox_input'>
+			<div id='loginBox_input_usernameLabel'>Username</div>
+			<input id='loginBox_input_usernameTextfield' type='text'>
+			<div id='loginBox_input_passwordLabel'>Password</div>
+			<input id='loginBox_input_passwordTextfield' type='password'>
+			<div id='loginBox_input_loginButton' class='button'>Login</div>
+		</div>
+	</div>
+	<div id='createNewAccountButton' class='button'>
+		Or Create New Account
+	</div>
+
+	<div id='newAccountSettings'>
+		<div class='header'>New User</div>
+		<div id='newAccountSettings_usernameAndPassword'>
+			<div id='newAccountSettings_usernameAndPassword_usernameLabel'>
+				Username
+			</div>
+			<input type='text' id='newAccountSettings_usernameAndPassword_username'>
+			<div id='newAccountSettings_usernameAndPassword_passwordLabel'>
+				Password
+			</div>
+			<input type='password' id='newAccountSettings_usernameAndPassword_password'>
+			<div id='newAccountSettings_usernameAndPassword_confirmPasswordLabel'>
+				Confirm Password
+			</div>
+			<input type='password' id='newAccountSettings_usernameAndPassword_confirmPassword'>
+		</div>
+		<div id='newAccountSettings_userInfo'>
+			<div class='newAccountSettings_userInfo_label'>First Name</div>
+			<input class='newAccountSettings_userInfo_value' placeholder="John">
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Last Name</div>
+			<input class='newAccountSettings_userInfo_value' placeholder="Doe">
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Middle Name</div>
+			<input class='newAccountSettings_userInfo_value' placeholder="Aaron">
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Hair Color</div>
+			<select class='newAccountSettings_userInfo_value' title='(What color is the majority of your hair?)'>
+				<option>Brunette</option>
+				<option>Blond</option>
+				<option>Black</option>
+				<option>Red</option>
+				<option>Unnatural Color</option>
+			</select>
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Hair Length</div>
+			<select class='newAccountSettings_userInfo_value'>
+				<option>Bald</option>
+				<option>1 Inch</option>
+				<option>2 Inches</option>
+				<option>3 Inches</option>
+				<option>4 Inches</option>
+				<option>5 Inches</option>
+				<option>6 Inches</option>
+				<option>7 Inches</option>
+				<option>8 Inches</option>
+				<option>9 Inches</option>
+				<option>10 Inches</option>
+				<option>11 Inches</option>
+				<option>1 Foot</option>
+				<option>>1 Foot</option>
+			</select>
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Gender</div>
+			<select class='newAccountSettings_userInfo_value'>
+				<option>Male</option>
+				<option>Female</option>
+			</select>
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Race</div>
+			<select class='newAccountSettings_userInfo_value'>
+				<option>Caucasian</option>
+				<option>African American</option>
+				<option>Asian</option>
+				<option>Pacific Islander</option>
+				<option>Latino / Hispanic</option>
+				<option>Native American</option>
+				<option>Native Alaskan</option>
+				<option>Other / Not Listed</option>
+			</select>
+		</div>
+		<div id='newAccountSettings_continueButton' class='button'>Continue</div>
+	</div>
+</body>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+<script src='/socket.io/socket.io.js'></script>
+
+<script src='/resource?file=login.js'></script>
+</html>

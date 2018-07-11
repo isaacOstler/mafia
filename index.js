@@ -14,7 +14,7 @@ var gameMaster = require(__dirname + '/modules/gameMaster.js');
 
 //code
 router.init(app,port);
-socketManager.init(io,http,port,gameMaster);
+socketManager.init(io,http,port,gameMaster,database);
 database.init();
 gameMaster.init();
 

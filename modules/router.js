@@ -24,7 +24,7 @@ module.exports.init = function(passedApp){
 	var	classFolder = appRoot + '/classes/';
 
 	app.get('/', function (req, res) {
-		res.sendFile(clientFolder + 'lobbies.html');
+		res.sendFile(clientFolder + 'login.html');
 	});
 	app.get('/resource', function(req, res) {
 		res.sendFile(clientFolder + req.query.file.toString());
@@ -32,14 +32,12 @@ module.exports.init = function(passedApp){
 	app.get('/class', function(req, res) {
 		res.sendFile(classFolder + req.query.file.toString());
 	});
-
 	app.use(function (req, res, next) {
 		var date = new Date();
 		var timeStamp = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 		console.log('[' + timeStamp.toString().prompt + ']');
 		next();
 	});
-
 	app.use(function (err, req, res, next) {
 		console.log('Error! '.error.bold + err.toString().error);
 	});
