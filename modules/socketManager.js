@@ -41,6 +41,12 @@ module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster,p
 		socket.on('getUserInfo',function(data){
 			socket.emit('recieveUserInfo',databaseManager.getUserInfo(data.guid));
 		});
+
+		socket.on('createUser',function(data){
+			databaseManager.createUser(data,function(newUser){
+				socket.emit('userCreated',newUser.userTraits.guid)
+			});
+		});
 	});
 
 	gameMaster.on('onLobbiesChange',function(newData){

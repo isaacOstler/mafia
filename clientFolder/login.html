@@ -10,11 +10,13 @@
 	<div id='loginBox'>
 		<div id='loginBox_header' class='header'>User Information</div>
 		<div id='loginBox_input'>
-			<div id='loginBox_input_usernameLabel'>Username</div>
-			<input id='loginBox_input_usernameTextfield' type='text'>
-			<div id='loginBox_input_passwordLabel'>Password</div>
-			<input id='loginBox_input_passwordTextfield' type='password'>
-			<div id='loginBox_input_loginButton' class='button'>Login</div>
+			<form id='loginForm'>
+				<div id='loginBox_input_usernameLabel'>Username</div>
+				<input id='loginBox_input_usernameTextfield' type='text'>
+				<div id='loginBox_input_passwordLabel'>Password</div>
+				<input id='loginBox_input_passwordTextfield' type='password'>
+				<input id='loginBox_input_loginButton' type='submit' value='Login'>
+			</form>
 		</div>
 	</div>
 	<div id='createNewAccountButton' class='button'>
@@ -39,16 +41,16 @@
 		</div>
 		<div id='newAccountSettings_userInfo'>
 			<div class='newAccountSettings_userInfo_label'>First Name</div>
-			<input class='newAccountSettings_userInfo_value' placeholder="John">
+			<input class='newAccountSettings_userInfo_value' id='newAccountSettings_userInfo_firstName' placeholder="John">
 			<div class='spacer'></div>
 			<div class='newAccountSettings_userInfo_label'>Last Name</div>
-			<input class='newAccountSettings_userInfo_value' placeholder="Doe">
+			<input class='newAccountSettings_userInfo_value' id='newAccountSettings_userInfo_lastName' placeholder="Doe">
 			<div class='spacer'></div>
 			<div class='newAccountSettings_userInfo_label'>Middle Name</div>
-			<input class='newAccountSettings_userInfo_value' placeholder="Aaron">
+			<input class='newAccountSettings_userInfo_value' id='newAccountSettings_userInfo_middleName' placeholder="Aaron">
 			<div class='spacer'></div>
 			<div class='newAccountSettings_userInfo_label'>Hair Color</div>
-			<select class='newAccountSettings_userInfo_value' title='(What color is the majority of your hair?)'>
+			<select id='newAccountSettings_userInfo_hairColor' class='newAccountSettings_userInfo_value' title='(What color is the majority of your hair?)'>
 				<option>Brunette</option>
 				<option>Blond</option>
 				<option>Black</option>
@@ -57,7 +59,7 @@
 			</select>
 			<div class='spacer'></div>
 			<div class='newAccountSettings_userInfo_label'>Hair Length</div>
-			<select class='newAccountSettings_userInfo_value'>
+			<select id='newAccountSettings_userInfo_hairLength' class='newAccountSettings_userInfo_value'>
 				<option>Bald</option>
 				<option>1 Inch</option>
 				<option>2 Inches</option>
@@ -75,13 +77,13 @@
 			</select>
 			<div class='spacer'></div>
 			<div class='newAccountSettings_userInfo_label'>Gender</div>
-			<select class='newAccountSettings_userInfo_value'>
+			<select id='newAccountSettings_userInfo_gender' class='newAccountSettings_userInfo_value'>
 				<option>Male</option>
 				<option>Female</option>
 			</select>
 			<div class='spacer'></div>
 			<div class='newAccountSettings_userInfo_label'>Race</div>
-			<select class='newAccountSettings_userInfo_value'>
+			<select id='newAccountSettings_userInfo_race' class='newAccountSettings_userInfo_value'>
 				<option>Caucasian</option>
 				<option>African American</option>
 				<option>Asian</option>
@@ -90,6 +92,31 @@
 				<option>Native American</option>
 				<option>Native Alaskan</option>
 				<option>Other / Not Listed</option>
+			</select>
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Height (Feet)</div>
+			<select id='newAccountSettings_userInfo_heightInFeet' class='newAccountSettings_userInfo_value'>
+				<option>3 Feet</option>
+				<option>4 Feet</option>
+				<option>5 Feet</option>
+				<option>6 Feet</option>
+				<option>7 Feet</option>
+			</select>
+			<div class='spacer'></div>
+			<div class='newAccountSettings_userInfo_label'>Height (Inches)</div>
+			<select id='newAccountSettings_userInfo_heightInInches' class='newAccountSettings_userInfo_value'>
+				<option>0 Inches</option>
+				<option>1 Inch</option>
+				<option>2 Inches</option>
+				<option>3 Inches</option>
+				<option>4 Inches</option>
+				<option>5 Inches</option>
+				<option>6 Inches</option>
+				<option>7 Inches</option>
+				<option>8 Inches</option>
+				<option>9 Inches</option>
+				<option>10 Inches</option>
+				<option>11 Inches</option>
 			</select>
 		</div>
 		<div id='newAccountSettings_continueButton' class='button'>Continue</div>

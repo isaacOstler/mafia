@@ -25,15 +25,14 @@ function init(){
     if(urlParams.player == null){
         window.location = '/resource?file=login.html';
     }
-    socket.emit('getUserInfo',{'guid' : urlParams.player});
     //set up socket connections
 
     socket.on('connect',function(){
+        socket.emit('getUserInfo',{'guid' : urlParams.player});
+       
         socket.on('recieveUserInfo',function(data){
             if(data == null){
                 window.location = '/resource?file=login.html';
-            }else{
-                alert("Welcome " + data.name.first);
             }
         });
         socket.emit('getCurrentGames');
