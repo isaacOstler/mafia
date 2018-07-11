@@ -4,6 +4,10 @@ var jsonfile = require('jsonfile');
 
 //modules
 
+//settings
+
+jsonfile.spaces = 4;
+
 //variables
 var users = [];
 
@@ -53,8 +57,9 @@ module.exports.createUser = function(newUser,callback){
 //private functions
 function writeUsersToFS(newUser,callback){
 	var file = appRoot + '/records/users.json';
+	let userCreated = newUser;
 	jsonfile.writeFile(file,users,function(){
-		callback(newUser.userTraits.guid);
+		callback(userCreated.userTraits.guid);
 	});
 }
 

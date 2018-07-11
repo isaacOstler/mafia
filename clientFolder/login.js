@@ -6,7 +6,11 @@ var loginForm = $('#loginForm'),
 	loginBox = $('#loginBox'),
 	newAccountSettings = $('#newAccountSettings'),
 	newAccountSettings_usernameAndPassword = $('#newAccountSettings_usernameAndPassword'),
+	newAccountSettings_usernameTextfield = $('#newAccountSettings_usernameAndPassword_username'),
+	newAccountSettings_passwordTextfield = $('#newAccountSettings_usernameAndPassword_password'),
+	newAccountSettings_confirmPasswordTextfield = $('#newAccountSettings_usernameAndPassword_confirmPassword'),
 	newAccountSettings_userInfo = $('#newAccountSettings_userInfo'),
+	newAccountSettings_usernamePasswordErrorMessage = $('#newAccountSettings_usernameAndPassword_errorMessage');
 	newAccountSettings_continueButton = $('#newAccountSettings_continueButton'),
 	newAccountSettings_firstName = $('#newAccountSettings_userInfo_firstName'),
 	newAccountSettings_lastName = $('#newAccountSettings_userInfo_lastName'),
@@ -14,6 +18,7 @@ var loginForm = $('#loginForm'),
 	newAccountSettings_hairColor = $('#newAccountSettings_userInfo_hairColor'),
 	newAccountSettings_hairLength = $('#newAccountSettings_userInfo_hairLength'),
 	newAccountSettings_gender = $('#newAccountSettings_userInfo_gender'),
+	newAccountSettings_race = $('#newAccountSettings_userInfo_race'),
 	newAccountSettings_heightInFeet = $('#newAccountSettings_userInfo_heightInFeet'),
 	newAccountSettings_heightInInches = $('#newAccountSettings_userInfo_heightInInches');
 
@@ -44,6 +49,10 @@ socket.on('connect',function(){
 		}
 	});
 
+	socket.on('userCreated',function(guid){
+		window.location = '/resource?file=lobbies.html&player=' + guid;
+	});
+
 	//event listeners
 	loginForm.submit(function(event){
 		socket.emit('getUserGUID',{'username' : usernameTextbox.val(),'password' : passwordTextbox.val()});
@@ -57,10 +66,26 @@ socket.on('connect',function(){
 	});
 	newAccountSettings_continueButton.click(function(event){
 		if(registrationStep == 0){
-			newAccountSettings_usernameAndPassword.fadeOut();
-			newAccountSettings_userInfo.fadeIn();
-			registrationStep++;
-			newAccountSettings_continueButton.html('Create');
+			newAccountSettings_usernamePasswordErrorMessage.stop();
+			newAccountSettings_usernamePasswordErrorMessage.fadeOut();
+			newAccountSettings_usernamePasswordErrorMessage.html('');
+			if(newAccountSettings_usernameTextfield.val() == ''){
+				//no username
+				newAccountSettings_usernamePasswordErrorMessage.fadeIn();
+				newAccountSettings_usernamePasswordErrorMessage.html('Please enter a username');
+			}else if(newAccountSettings_passwordTextfield.val() != newAccountSettings_confirmPasswordTextfield.val()){
+				//no password
+				newAccountSettings_usernamePasswordErrorMessage.fadeIn();
+				newAccountSettings_usernamePasswordErrorMessage.html('Passwords do not match');
+			}else{
+				newUserUsername = newAccountSettings_usernameTextfield.val();
+				newUserPassword = newAccountSettings_passwordTextfield.val();
+				newAccountSettings_usernamePasswordErrorMessage.fadeOut();
+				newAccountSettings_usernameAndPassword.fadeOut();
+				newAccountSettings_userInfo.fadeIn();
+				registrationStep++;
+				newAccountSettings_continueButton.html('Create');
+			}
 		}else{
 			if(newUserUsername == null || newUserPassword == null){
 				throw new Error('Username and/or password was null!');
@@ -87,7 +112,7 @@ socket.on('connect',function(){
 						"length" : Number(newAccountSettings_hairLength.val())
 					},
 					"gender" : newAccountSettings_gender.val(),
-					"race" : newAccountSettings_userInfo_race.val(),
+					"race" : newAccountSettings_race.val(),
 					"height" :
 					{
 						"feet" : Number(newAccountSettings_heightInFeet.val()),
@@ -97,6 +122,7 @@ socket.on('connect',function(){
 			}
 			registrationStep = 0;
 			newAccountSettings_continueButton.html('Continue');
+			socket.emit('createUser',newUser);
 		}
 	});
 });

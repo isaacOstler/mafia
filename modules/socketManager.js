@@ -43,8 +43,8 @@ module.exports.init = function(passedIO,passedHTTP,passedPort,passedGameMaster,p
 		});
 
 		socket.on('createUser',function(data){
-			databaseManager.createUser(data,function(newUser){
-				socket.emit('userCreated',newUser.userTraits.guid)
+			databaseManager.createUser(data,function(guid){
+				socket.emit('userCreated',guid)
 			});
 		});
 	});
