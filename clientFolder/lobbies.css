@@ -7,6 +7,13 @@ body{
 	color:white;
 	font-family: 'Arial';
 }
+#user{
+	position: absolute;
+	top:5px;
+	right: 5px;
+	cursor: pointer;
+	font-size: 12px;
+}
 #background{
 	position: absolute;
 	z-index: -1;

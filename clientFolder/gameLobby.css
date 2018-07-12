@@ -1,0 +1,162 @@
+body{
+	background:linear-gradient(to bottom, #2f2f2f,black);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color:white;
+	font-family: 'Arial';
+}
+#header{
+	position: absolute;
+	top:5px;
+	left:5px;
+	width: calc(100% - 10px);
+	height: 30px;
+	font-size: 24px;
+	text-align: center;
+	border-bottom: 1px solid grey;
+	border-top: 1px solid grey;
+	background: linear-gradient(to right,#ffffff00 0%, #582020 50%, #ffffff00 100%);
+}
+#list{
+	position: absolute;
+	top:40px;
+	left:5px;
+	width: calc(100% - 10px);
+	height: calc(100% - 45px);
+	font-size: 24px;
+	text-align: center;
+	border-bottom: 1px solid grey;
+	border-top: 1px solid grey;
+	background: linear-gradient(to right,#202020 0%, black 30%, black 70%, #202020 100%);
+}
+#list_information{
+	position: absolute;
+	top:0px;
+	left: 0px;
+	height: calc(45% - 4px);
+	width: 100%;
+	border-bottom: 1px solid grey;
+    font-size: 14px;
+}
+#list_information_hostMessage{
+	position: absolute;
+	top:20px;
+	left: 20px;
+	width: calc(100% - 40px);
+	font-size: 14px;
+	color:grey;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 1px solid grey;
+	z-index: 2;
+	background-color: rgba(0,0,0,.4);
+}
+#list_information_generalSettings{
+	position: absolute;
+	top:0px;
+	left: 0px;
+	width: 100%;
+	border-bottom: 1px solid grey;
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 20px; /* Firefox */
+    column-gap: 20px;
+    -webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid; /* Firefox */
+    column-rule-style: solid;
+    column-rule-width: 1px;
+    column-rule-color: grey;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+#list_information_currentRoles{
+	position: absolute;
+	bottom: 2px;
+	height: calc(100% - 53px);
+	width: calc(50% - 2px);
+	left: 0px;
+	border: 1px solid grey;
+}
+#list_information_allRoles{
+	display: none;
+	position: absolute;
+	bottom: 2px;
+	height: calc(100% - 53px);
+	width: calc(50% - 4px);
+	right: 0px;
+	border: 1px solid grey;
+}
+#list_information_roleSettingsHeader{
+	position: absolute;
+	top: calc(25% - 5px);
+	width: calc(50% - 4px);
+	right: 0px;
+	border: 1px solid grey;
+	height: 19px;
+	border-bottom: 0px;
+}
+#list_start{
+	position: absolute;
+	bottom: 2px;
+	height: calc(5% - 4px);
+	left: 0px;
+	width: calc(100% - 2px);
+	border: 1px solid grey;
+	font-size: 18px;
+	color:white;
+	background:linear-gradient(to bottom,red,rgb(180,0,0));
+}
+#list_players{
+	position: absolute;
+	top: 45%;
+	height: calc(50% - 4px);
+	left: 0px;
+	width: calc(100% - 2px);
+	border: 1px solid grey;
+}
+#list_information_roleSettings{
+	position: absolute;
+	bottom: 23px;
+	height: calc(100% - 94px);
+	width: calc(50% - 4px);
+	right: 0px;
+	border: 1px solid grey;
+}
+#list_information_closeRoleSettings{
+	position: absolute;
+	bottom: 2px;
+	right: 0px;
+	border: 1px solid grey;
+	border-top: 0px;
+	height: 20px;
+	width: calc(50% - 4px);
+	background-color:rgba(255,0,0,.7);
+}
+.label{
+	float:left;
+	width: calc(75% - 1px);
+	padding-bottom: 3px;
+}
+.value{
+	float:right;
+	width: calc(25% - 1px);
+	padding-bottom: 3px;
+	height: 16px;
+	background: linear-gradient(to top,#585858, grey);
+	border: 1px solid white;
+	color:white;
+	text-align: center;
+}
+.spacer{
+	width: 100%;
+	height: 3px;
+}
+.setting{
+	border-bottom: 1px solid grey;
+	float:left;
+	width: 100%;
+	height: 20px;
+}

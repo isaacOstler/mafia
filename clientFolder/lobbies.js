@@ -1,5 +1,6 @@
 //DOM references
 var gamesList = $('#openLobbiesList_list');
+var userElement = $('#user');
 
 //variables
 var socket = io();
@@ -33,6 +34,9 @@ function init(){
         socket.on('recieveUserInfo',function(data){
             if(data == null){
                 window.location = '/resource?file=login.html';
+            }else{
+                console.log(data);
+                userElement.html('Logged in as <u>' + data.loginInformation.username + '</u>');
             }
         });
         socket.emit('getCurrentGames');
@@ -70,6 +74,9 @@ function init(){
                 socket.emit('leaveGames');
                 socket.emit('joinGame',{'gameGUID' : gameGUID,'player' : player});
             });
+        });
+        userElement.click(function(event){
+            window.location = '/resource?file=login.html';
         });
     });
 }

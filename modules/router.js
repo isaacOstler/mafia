@@ -24,7 +24,7 @@ module.exports.init = function(passedApp){
 	var	classFolder = appRoot + '/classes/';
 
 	app.get('/', function (req, res) {
-		res.sendFile(clientFolder + 'login.html');
+		res.sendFile(clientFolder + 'gameLobby.html');
 	});
 	app.get('/resource', function(req, res) {
 		res.sendFile(clientFolder + req.query.file.toString());

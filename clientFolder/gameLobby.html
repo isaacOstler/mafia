@@ -1,0 +1,86 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mafia - Lobby</title>
+	<link rel='stylesheet' type='text/css' href='/resource?file=gameLobby.css'>
+	<link rel='stylesheet' type='text/css' href='/resource?file=generalThemes.css'>
+</head>
+<body>
+	<div id='header'>
+		'Tifie Staff'
+	</div>
+	<div id='list'>
+		<div id='list_information'>
+			<div id='list_information_generalSettings'>
+				<div class='label'>Day Length</div> <input class='value' min='10' max='1000' value='150' type='number'><br />
+				<div class='spacer'></div>
+				<div class='label'>Night Length</div> <input class='value' min='10' max='1000' value='20' type='number'><br />
+				<div class='spacer'></div>
+				<div class='label'>Trial Length</div> <input class='value' min='10' max='600' value='45' type='number'><br />
+				<div class='spacer'></div>
+				<div class='label'>Hold Trial On Day 1</div> <input type='checkbox'><br />
+			</div>
+			<div class='list' id='list_information_currentRoles'>
+				<div class='listItem'>Any Random</div>
+				<div class='listItem'>Citizen</div>
+				<div class='listItem'>Godfather</div>
+				<div class='listItem'>Mafioso</div>
+			</div>
+			<div class='list' id='list_information_allRoles'>
+				<div class='listItem'>Any Random</div>
+				<div class='listItem'>Citizen</div>
+				<div class='listItem'>Godfather</div>
+				<div class='listItem'>Mafioso</div>
+				<div class='listItem'>Blackmailer</div>
+				<div class='listItem'>Spy</div>
+				<div class='listItem'>Sheriff</div>
+				<div class='listItem'>Detective</div>
+				<div class='listItem'>Vigilante</div>
+				<div class='listItem'>Jailer</div>
+				<div class='listItem'>Mayor</div>
+				<div class='listItem'>Doctor</div>
+				<div class='listItem'>Escort</div>
+				<div class='listItem'>Bus Driver</div>
+				<div class='listItem'>Body Guard</div>
+				<div class='listItem'>Arsonist</div>
+				<div class='listItem'>Jester</div>
+				<div class='listItem'>Witch</div>
+				<div class='listItem'>Survivor</div>
+			</div>
+			<div id='list_information_roleSettingsHeader'>
+				Citizen Settings
+			</div>
+			<div id='list_information_roleSettings' class='list'>
+				<div class='setting'>
+					<div class='label'>Wins When Last Town</div><input type='checkbox'>
+				</div>
+				<div class='setting'>
+					<div class='label'>Vest Uses</div>
+					<select class='value'>
+						<option>None</option>
+						<option>1 Night</option>
+						<option selected='selected'>2 Nights</option>
+						<option>3 Nights</option>
+						<option>4 Nights</option>
+					</select>
+				</div>
+			</div>
+			<div class='button' id='list_information_closeRoleSettings'>
+				Close Settings
+			</div>
+		</div>
+		<div class='list' id='list_players'>
+			<div class='listItem'>Player Name</div>
+		</div>
+		<div class='button' id='list_start'>
+			Start Game
+		</div>
+	</div>
+</body>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+<script src='/socket.io/socket.io.js'></script>
+
+<script src='/resource?file=gameLobby.js'></script>
+</html>

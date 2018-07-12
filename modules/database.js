@@ -34,22 +34,25 @@ module.exports.getUserGUID = function(username,password){
 module.exports.getUserInfo = function(guid){
 	for(var i = 0;i < users.length;i++){
 		if(users[i].userTraits.guid == guid){
-			return users[i].userTraits;
-		}
-	}
-	return null;
-};
-
-module.exports.getUserInformation = function(guid){
-	for(var i = 0;i < users.length;i++){
-		if(users[i].userTraits.guid == guid){
-			return users[i].userTraits;
+			var info = 
+			{
+				'loginInformation' : 
+				{
+					'username' : users[i].loginInformation.username
+				},
+				'userTraits' : users[i].userTraits
+			}
+			return info;
 		}
 	}
 }
 
 module.exports.createUser = function(newUser,callback){
 	newUser.userTraits.guid = (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+	newUser.userTraits.points = 0;
+	newUser.userTraits.gamesWon = 0;
+	newUser.userTraits.gamesPlayed = 0;
+	newUser.userTraits.accountCreatedOn = new Date();
 	users.splice(users.length,0,newUser);
 	writeUsersToFS(newUser,callback);
 }

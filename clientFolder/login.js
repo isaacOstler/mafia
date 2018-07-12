@@ -38,6 +38,8 @@ socket.on('connect',function(){
 	}
 	hasInit = true;
 
+	usernameTextbox.focus();
+
 	//io
 	socket.on('recieveUserGUID',function(data){
 		if(data == null){
