@@ -69,10 +69,8 @@ function init(){
                 if(gameGUID == null || gameGUID == undefined){
                     return;
                 }
-                var player = new Player("Unknown Player");
                 //player.setGUID(urlParams.player);
-                socket.emit('leaveGames');
-                socket.emit('joinGame',{'gameGUID' : gameGUID,'player' : player});
+                window.location = '/resource?file=gameLobby.html&player=' + urlParams.player + '&game=' + gameGUID;
             });
         });
         userElement.click(function(event){
